@@ -157,8 +157,8 @@ function initiatePayment() {
       window.location.href = "/spinPage"; // Redirect to spin page after payment
     },
     prefill: {
-      name: "User",
-      email: "zappyWheel@Gmail.com",
+      name: "Zappyuser",
+      email: "zappyw@gmail.com",
       contact: "8016487441"
     },
     theme: {
