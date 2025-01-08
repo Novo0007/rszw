@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link rel="stylesheet" href="RS.css">
+  <title>Zappy Wheel</title>
+  
+</head>
+<body>
+  <div class="wheel-container">
+    <h1>Zappy Wheel 🎡</h1>
+    <canvas id="wheel" width="400" height="400"></canvas>
+    <button id="spinButton">🎯 Spin the Wheel (₹10)</button>
+    <div id="balance">Your Balance: ₹0</div>
+    <div id="result">₹1 Spin ₹10 to win upto ₹99!</div>
+    <div id="history"></div>
+    <button id="addFundsButton">Add ₹10</button>
+    <button id="withdrawButton">Withdraw</button>
+<div id="withdrawPopup" class="popup hidden">
+  <div class="popup-content">
+    <h2>Withdraw Funds</h2>
+    <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw" min="10">
+    <button id="confirmWithdraw">Confirm Withdrawal</button>
+    <button id="closeWithdrawPopup">Cancel</button>
+  </div>
+</div>
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <h2>🎉 Congratulations! 🎉</h2>
+      <p id="popupMessage"></p>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <audio id="spinSound" src="https://firebasestorage.googleapis.com/v0/b/spirit-fc16f.appspot.com/o/zw%20music%2Fspin-232536.mp3?alt=media&token=fb057052-01f4-4a2c-be07-e6db060b3430"></audio>
+  <audio id="congratsSound" src="https://firebasestorage.googleapis.com/v0/b/spirit-fc16f.appspot.com/o/zw%20music%2Ftada-fanfare-a-6313.mp3?alt=media&token=a1f19ec0-0a16-48eb-a206-d785909c8166"></audio>
+
+   <script src="RS.js"></script>
+</body>
+</html>
