@@ -145,7 +145,7 @@ function initiatePayment() {
   // For example, with Razorpay:
   
   const options = {
-    key: "rzp_live_vx5WsypnGz5u9l", 
+    key: "rzp_live_X4DZnSdUxCtfV8", 
     amount: 1000, // ₹10
     currency: "INR",
     name: "Zappy",
