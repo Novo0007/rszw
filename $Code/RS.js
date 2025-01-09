@@ -15,9 +15,10 @@ const historyDiv = document.getElementById("history");
 let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 0;
 
 const options = [
-  "₹1", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",
   "₹1", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10", 
-  "₹19", "₹29", "₹99", "₹-99", 
+  "₹-1", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",  // More common options
+    // Even more common options
+  "₹19", "₹29", "₹100",  // Rare options
   "Better luck next time", "+1 Spin", "₹-10"
 ];
 
