@@ -14,8 +14,6 @@ h1 {
   font-size: 36px;
   margin: 20px 0;
   color: #ffffff;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff; /* Neon glow */
-  animation: neonPulse 1.5s infinite alternate;
 }
 
 .wheel-container {
@@ -48,20 +46,17 @@ button {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 10px rgba(255, 79, 43, 0.4);
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
 button:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(255, 79, 43, 0.6);
-  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 #result, #balance {
   margin-top: 15px;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
 #history {
@@ -110,7 +105,6 @@ button:hover {
   font-size: 28px;
   color: #ff00ff;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px #ff00ff;
 }
 
 .popup-content button {
@@ -128,7 +122,6 @@ button:hover {
 .popup-content button:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
-  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 /* Keyframe Animations */
@@ -152,18 +145,6 @@ button:hover {
   }
 }
 
-@keyframes neonPulse {
-  0% {
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-  }
-  50% {
-    text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
-  }
-  100% {
-    text-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff, 0 0 70px #ff00ff;
-  }
-}
-
 @keyframes gumblinBackground {
   0% {
     background-position: 0% 50%;
@@ -173,18 +154,6 @@ button:hover {
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff, 0 0 30px #ff00ff;
-  }
-  50% {
-    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
-  }
-  100% {
-    box-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff, 0 0 30px #ff00ff;
   }
 }
 
