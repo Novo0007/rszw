@@ -9,13 +9,14 @@
   
 </head>
 <body>
-  <div class="wheel-container">
-    <h1>Zappy Wheel 🎡</h1>
+ <div class="wheel-container">
+    <h1>Zappy Wheel 💰</h1>
+    <div id="result">win upto ₹100!</div>
     <canvas id="wheel" width="400" height="400"></canvas>
-    <button id="spinButton">🎯 Spin the Wheel (₹10)</button>
+
+    <button id="spinButton">Spin the Wheel (₹-10)</button>
     <div id="balance">Your Balance: ₹0</div>
-    <div id="result">₹1 Spin ₹10 to win upto ₹99!</div>
-   
+     
     <button id="addFundsButton">Add ₹10</button>
     <button id="withdrawButton">Withdraw</button>
 <div id="withdrawPopup" class="popup hidden">
@@ -24,9 +25,27 @@
     <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw" min="10">
     <button id="confirmWithdraw">Confirm Withdrawal</button>
     <button id="closeWithdrawPopup">Cancel</button>
+    <h2>Withdraw Funds! Please give a screen shot of your Withdraw amount history & Send Me your Upi ID, On This Email - (helpzappy@gmail.com)</h2>
   </div>
 </div>
   </div>
+  <div id="withdrawPopup" class="hidden">
+  <div class="popup-content">
+    <h2>Withdraw Funds</h2>
+    <label for="upiId">Enter UPI ID:</label>
+    <input type="text" id="upiId" placeholder="e.g., yourupi@bank">
+    <label for="withdrawAmountInput">Enter Amount:</label>
+    <input type="number" id="withdrawAmountInput" placeholder="Enter amount">
+    <button id="submitWithdraw">Submit</button>
+    <button id="closeWithdrawPopup">Close</button>
+  </div>
+</div>
+
+<div id="withdrawHistory">
+  <h2>Withdrawal History</h2>
+  <!-- Withdrawal history will be dynamically loaded here -->
+</div>
+
 <div id="history"></div>
   <div id="popup" class="popup hidden">
     <div class="popup-content">
