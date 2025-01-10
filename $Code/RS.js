@@ -15,10 +15,9 @@ const historyDiv = document.getElementById("history");
 let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 0;
 
 const options = [
-  "₹1", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10", 
-  "₹-1", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",  // More common options
-    // Even more common options
-  "₹19", "₹29", "₹100",  // Rare options
+  "₹1", "₹3", "₹5", "₹7", "₹6", "Bad luck 😢 ", "₹10",
+  "₹-20", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",
+  "₹19", "₹29", "₹100","₹-84",
   "Better luck next time", "+1 Spin", "₹-10"
 ];
 
@@ -28,7 +27,8 @@ let currentAngle = 0;
 let isSpinning = false;
 let spinVelocity = 0;
 
-// Fetch history from localStorage
+let spinCount = 0;  // Track the number of spins
+
 function loadHistory() {
   const history = JSON.parse(localStorage.getItem("spinHistory")) || [];
   historyDiv.innerHTML = "<h2>Spin History</h2>";
@@ -105,6 +105,16 @@ function spinWheel() {
 
   spinSound.play();
 
+  spinCount++;  // Increment the spin count
+
+  // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
+  const rareAmounts = ["₹19", "₹29", "₹100"];
+  if (spinCount % 15 === 0 || spinCount % 15 === 0) {
+    const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
+    const index = Math.floor(Math.random() * numOptions);
+    options[index] = rareAmount;  // Replace one random option with a rare amount
+  }
+
   const spin = setInterval(() => {
     spinVelocity *= deceleration;
     currentAngle += spinVelocity * Math.PI / 180;
@@ -124,14 +134,12 @@ function spinWheel() {
       congratsSound.play();
       popup.classList.remove("hidden");
 
-      // Update history and localStorage
       const history = JSON.parse(localStorage.getItem("spinHistory")) || [];
       history.push(result);
       localStorage.setItem("spinHistory", JSON.stringify(history));
 
       loadHistory();
 
-      // Update balance after the result
       if (result.includes("₹")) {
         const amount = parseInt(result.replace("₹", ""), 10);
         userBalance += amount;
@@ -141,25 +149,71 @@ function spinWheel() {
   }, 16);
 }
 
+withdrawButton.addEventListener("click", function () {
+  document.getElementById("withdrawPopup").classList.remove("hidden");
+});
+
+document.getElementById("closeWithdrawPopup").addEventListener("click", function () {
+  document.getElementById("withdrawPopup").classList.add("hidden");
+});
+
+document.getElementById("confirmWithdraw").addEventListener("click", function () {
+  const withdrawAmount = parseInt(document.getElementById("withdrawAmount").value);
+  if (withdrawAmount > userBalance) {
+    alert("Insufficient balance.");
+    return;
+  }
+  userBalance -= withdrawAmount;
+  updateBalance();
+  alert(`You have successfully withdrawn ₹${withdrawAmount}.`);
+  document.getElementById("withdrawPopup").classList.add("hidden");
+
+  const history = JSON.parse(localStorage.getItem("withdrawHistory")) || [];
+  history.push(`₹${withdrawAmount}`);
+  localStorage.setItem("withdrawHistory", JSON.stringify(history));
+  loadWithdrawalHistory();
+});
+
+document.getElementById("submitWithdraw").addEventListener("click", function () {
+  const upiId = document.getElementById("upiId").value;
+  const withdrawAmountInput = parseInt(document.getElementById("withdrawAmountInput").value);
+
+  if (!upiId || withdrawAmountInput <= 0) {
+    alert("Please enter valid UPI ID and amount.");
+    return;
+  }
+
+  alert(`Withdrawal request for ₹${withdrawAmountInput} has been submitted to ${upiId}.`);
+  document.getElementById("withdrawPopup").classList.add("hidden");
+});
+
+function loadWithdrawalHistory() {
+  const withdrawHistory = JSON.parse(localStorage.getItem("withdrawHistory")) || [];
+  const withdrawHistoryDiv = document.getElementById("withdrawHistory");
+  withdrawHistoryDiv.innerHTML = "<h2>Withdrawal History</h2>";
+  withdrawHistory.forEach(entry => {
+    const div = document.createElement("div");
+    div.textContent = entry;
+    withdrawHistoryDiv.appendChild(div);
+  });
+}
+
 function initiatePayment() {
-  // Here you can integrate any payment gateway (e.g., Razorpay, PayPal)
-  // For example, with Razorpay:
-  
   const options = {
-    key: "rzp_live_X4DZnSdUxCtfV8", 
-    amount: 1000, // ₹10
+    key: "rzp_live_X4DZnSdUxCtfV8",
+    amount: 1000,
     currency: "INR",
     name: "Zappy",
     description: "Add funds to your account",
-    handler: function(response) {
+    handler: function (response) {
       alert("Payment successful!");
-      userBalance += 10; // Add ₹10 to user balance after payment
+      userBalance += 10;
       updateBalance();
-      window.location.href = "/spinPage"; // Redirect to spin page after payment
+      window.location.href = "/$Code/RS.html";
     },
     prefill: {
       name: "Zappyuser",
-      email: "zappyw@gmail.com",
+      email: "helpzappy@gmail.com",
       contact: "8016487441"
     },
     theme: {
@@ -171,27 +225,7 @@ function initiatePayment() {
   rzp.open();
 }
 
-function withdrawFunds() {
-  if (userBalance < 10) {
-    alert("Your balance is too low to withdraw!");
-    return;
-  }
-
-  const withdrawAmount = prompt("Enter amount to withdraw (₹):");
-
-  if (withdrawAmount && !isNaN(withdrawAmount) && withdrawAmount <= userBalance) {
-    userBalance -= parseInt(withdrawAmount, 10);
-    updateBalance();
-    alert(`₹${withdrawAmount} withdrawn successfully!`);
-  } else {
-    alert("Invalid amount or insufficient balance!");
-  }
-}
-
-spinButton.addEventListener("click", spinWheel);
-closePopup.addEventListener("click", () => popup.classList.add("hidden"));
 addFundsButton.addEventListener("click", initiatePayment);
-withdrawButton.addEventListener("click", withdrawFunds);
 
 loadHistory();
 drawWheel();
