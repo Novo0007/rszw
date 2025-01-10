@@ -1,5 +1,6 @@
-const canvas = document.getElementById("wheel");
+const canvas = document.getElementById("wheel"); 
 const ctx = canvas.getContext("2d");
+
 const spinButton = document.getElementById("spinButton");
 const resultDiv = document.getElementById("result");
 const balanceDiv = document.getElementById("balance");
@@ -18,7 +19,7 @@ const options = [
   "₹1", "₹3", "₹5", "₹7", "₹6", "Bad luck 😢 ", "₹10",
   "₹-20", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",
   "₹19", "₹29", "₹100","₹-84",
-  "Better luck next time", "+1 Spin", "₹-10"
+  "Better luck next time", "₹10", "₹-10"
 ];
 
 const numOptions = options.length;
@@ -27,7 +28,7 @@ let currentAngle = 0;
 let isSpinning = false;
 let spinVelocity = 0;
 
-let spinCount = 0;  // Track the number of spins
+let spinCount = 0; // Track the number of spins
 
 function loadHistory() {
   const history = JSON.parse(localStorage.getItem("spinHistory")) || [];
@@ -78,10 +79,9 @@ function drawArrow() {
   const arrowHeight = 20;
   ctx.save();
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.rotate(currentAngle);
   ctx.beginPath();
-  ctx.moveTo(0 - 10, -canvas.height / 2);
-  ctx.lineTo(0 + 10, -canvas.height / 2);
+  ctx.moveTo(-10, -canvas.height / 2);
+  ctx.lineTo(10, -canvas.height / 2);
   ctx.lineTo(0, -canvas.height / 2 - arrowHeight);
   ctx.closePath();
   ctx.fillStyle = "#ffffff";
@@ -101,18 +101,17 @@ function spinWheel() {
 
   isSpinning = true;
   spinVelocity = Math.random() * 10 + 20;
-  let deceleration = 0.97;
+  const deceleration = 0.97;
 
   spinSound.play();
-
-  spinCount++;  // Increment the spin count
+  spinCount++; // Increment the spin count
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
   const rareAmounts = ["₹19", "₹29", "₹100"];
-  if (spinCount % 15 === 0 || spinCount % 15 === 0) {
+  if (spinCount % 15 === 0 || spinCount % 17 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
-    options[index] = rareAmount;  // Replace one random option with a rare amount
+    options[index] = rareAmount; // Replace one random option with a rare amount
   }
 
   const spin = setInterval(() => {
@@ -148,6 +147,8 @@ function spinWheel() {
     }
   }, 16);
 }
+
+spinButton.addEventListener("click", spinWheel);
 
 withdrawButton.addEventListener("click", function () {
   document.getElementById("withdrawPopup").classList.remove("hidden");
