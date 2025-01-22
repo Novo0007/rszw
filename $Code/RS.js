@@ -1,4 +1,4 @@
-const canvas = document.getElementById("wheel"); 
+ const canvas = document.getElementById("wheel"); 
 const ctx = canvas.getContext("2d");
 
 const spinButton = document.getElementById("spinButton");
@@ -16,10 +16,10 @@ const historyDiv = document.getElementById("history");
 let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 0;
 
 const options = [
-  "₹1", "₹3", "₹5", "₹7", "₹6", "Bad luck 😢 ", "₹10",
-  "₹-20", "₹3", "₹5", "₹7", "₹6", "₹9", "₹10",
-  "₹19", "₹29", "₹100","₹-84",
-  "Better luck next time", "₹10", "₹-10"
+  "₹1", "₹30", "₹50", "₹70", "₹60", "Bad luck 😢 ", "₹100",
+  "₹-20", "₹30", "₹50", "₹70", "₹60", "₹90", "₹100",
+  "₹190", "₹290", "₹1000","₹-80",
+  "Better luck next time", "₹99", "₹-100"
 ];
 
 const numOptions = options.length;
@@ -84,14 +84,14 @@ function drawArrow() {
   ctx.lineTo(10, -canvas.height / 2);
   ctx.lineTo(0, -canvas.height / 2 - arrowHeight);
   ctx.closePath();
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "#fff";
   ctx.fill();
   ctx.restore();
 }
 
 function spinWheel() {
   if (isSpinning) return;
-  if (userBalance < 10) {
+  if (userBalance < 100) {
     alert("You don't have enough balance! Please add funds.");
     return;
   }
@@ -107,8 +107,8 @@ function spinWheel() {
   spinCount++; // Increment the spin count
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
-  const rareAmounts = ["₹19", "₹29", "₹100"];
-  if (spinCount % 15 === 0 || spinCount % 17 === 0) {
+  const rareAmounts = ["", "", "₹1000"];
+  if (spinCount % 30 === 0 || spinCount % 30 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
     options[index] = rareAmount; // Replace one random option with a rare amount
@@ -179,7 +179,7 @@ document.getElementById("submitWithdraw").addEventListener("click", function () 
   const upiId = document.getElementById("upiId").value;
   const withdrawAmountInput = parseInt(document.getElementById("withdrawAmountInput").value);
 
-  if (!upiId || withdrawAmountInput <= 0) {
+  if (!upiId || withdrawAmountInput <= 100) {
     alert("Please enter valid UPI ID and amount.");
     return;
   }
@@ -202,15 +202,15 @@ function loadWithdrawalHistory() {
 function initiatePayment() {
   const options = {
     key: "rzp_live_X4DZnSdUxCtfV8",
-    amount: 1000,
+    amount: 10000,
     currency: "INR",
     name: "Zappy",
     description: "Add funds to your account",
     handler: function (response) {
       alert("Payment successful!");
-      userBalance += 10;
+      userBalance += 100;
       updateBalance();
-      window.location.href = "/$Code/RS.html";
+      window.location.href = "https://novo0007.github.io/rszw/$Code/RS.html";
     },
     prefill: {
       name: "Zappyuser",
