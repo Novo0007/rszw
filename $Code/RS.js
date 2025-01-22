@@ -108,7 +108,7 @@ function spinWheel() {
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
   const rareAmounts = ["", "", "₹1000"];
-  if (spinCount % 30 === 0 || spinCount % 30 === 0) {
+  if (spinCount % 15 === 0 || spinCount % 15 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
     options[index] = rareAmount; // Replace one random option with a rare amount
@@ -204,7 +204,7 @@ function initiatePayment() {
     key: "rzp_live_X4DZnSdUxCtfV8",
     amount: 10000,
     currency: "INR",
-    name: "Zappy",
+    name: "Money Wheel ",
     description: "Add funds to your account",
     handler: function (response) {
       alert("Payment successful!");
