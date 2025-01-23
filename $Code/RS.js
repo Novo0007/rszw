@@ -14,12 +14,16 @@ const congratsSound = document.getElementById("congratsSound");
 const historyDiv = document.getElementById("history");
 
 let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 0;
+document.getElementById("closeWithdrawPopup").addEventListener("click", function () {
+  document.getElementById("withdrawPopup").classList.add("hidden");
+});
+
 
 const options = [
-  "₹1", "₹30", "₹50", "₹70", "₹60", "Bad luck 😢 ", "₹100",
-  "₹-20", "₹30", "₹50", "₹70", "₹60", "₹90", "₹100",
-  "₹190", "₹290", "₹1000","₹-80",
-  "Better luck next time", "₹99", "₹-100"
+  "₹99", "₹99", "₹99", "₹99", "₹1", "₹99 ", "₹99",
+  "₹99", "₹99", "₹99", "₹-1", "₹99", "₹-99", "99",
+  "₹99", "₹1", "₹1000","₹99",
+  "₹1", "₹99", "₹99"
 ];
 
 const numOptions = options.length;
@@ -96,7 +100,7 @@ function spinWheel() {
     return;
   }
 
-  userBalance -= 10;
+  userBalance -= 100;
   updateBalance();
 
   isSpinning = true;
@@ -108,7 +112,7 @@ function spinWheel() {
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
   const rareAmounts = ["", "", "₹1000"];
-  if (spinCount % 15 === 0 || spinCount % 15 === 0) {
+  if (spinCount % 30 === 0 || spinCount % 30 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
     options[index] = rareAmount; // Replace one random option with a rare amount
@@ -154,16 +158,20 @@ withdrawButton.addEventListener("click", function () {
   document.getElementById("withdrawPopup").classList.remove("hidden");
 });
 
-document.getElementById("closeWithdrawPopup").addEventListener("click", function () {
-  document.getElementById("withdrawPopup").classList.add("hidden");
-});
-
 document.getElementById("confirmWithdraw").addEventListener("click", function () {
   const withdrawAmount = parseInt(document.getElementById("withdrawAmount").value);
+  
+  // Check if the withdrawal amount is at least ₹1000
+  if (withdrawAmount < 1000) {
+    alert("The minimum withdrawal amount is ₹1000.");
+    return;
+  }
+  
   if (withdrawAmount > userBalance) {
     alert("Insufficient balance.");
     return;
   }
+
   userBalance -= withdrawAmount;
   updateBalance();
   alert(`You have successfully withdrawn ₹${withdrawAmount}.`);
@@ -175,11 +183,12 @@ document.getElementById("confirmWithdraw").addEventListener("click", function ()
   loadWithdrawalHistory();
 });
 
+
 document.getElementById("submitWithdraw").addEventListener("click", function () {
   const upiId = document.getElementById("upiId").value;
   const withdrawAmountInput = parseInt(document.getElementById("withdrawAmountInput").value);
 
-  if (!upiId || withdrawAmountInput <= 100) {
+  if (!upiId || withdrawAmountInput <= 1000) {
     alert("Please enter valid UPI ID and amount.");
     return;
   }
@@ -227,6 +236,9 @@ function initiatePayment() {
 }
 
 addFundsButton.addEventListener("click", initiatePayment);
+closePopup.addEventListener("click", function () {
+  popup.classList.add("hidden");
+});
 
 loadHistory();
 drawWheel();
