@@ -1,55 +1,56 @@
-    /* General Styling */
+/* General Styling */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Comic Sans MS', sans-serif; /* Fun, cartoonish font */
   text-align: center;
-  background: linear-gradient(to bottom right, #6a00ff, #ff3b3b); /* Neon blue to bright red gradient */
+  background: linear-gradient(to bottom right, #ff99cc, #ffcc00); /* Soft pink to bright yellow gradient */
   margin: 0;
   padding: 0;
-  color: #ffffff;
+  color: #333333; /* Darker text for better readability */
   background-size: 200% 200%;
   animation: boldBackground 4s ease infinite;
 }
 
 h1 {
-  font-size: 42px;
-  margin: 20px 0;
-  color: #ffeb3b; /* Bold yellow */
+  font-size: 48px;
+  margin: 30px 0;
+  color: #ff3385; /* Fun bright pink */
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 800;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Slight shadow for a 3D effect */
 }
 
 .wheel-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.4); /* Darker semi-transparent background */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.6); /* Lighter background for a more playful feel */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
 }
 
 canvas {
   border-radius: 50%;
-  background: #000;
-  border: 8px solid #ff0000; /* Bold red border */
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+  background: #fff;
+  border: 8px solid #ff66cc; /* Playful pink border */
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.8); /* Light pink shadow */
   margin: 20px auto;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 canvas:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255, 0, 0, 1);
+  box-shadow: 0 0 40px rgba(255, 105, 180, 1);
 }
 
 button {
-  padding: 15px 30px;
-  font-size: 24px;
-  font-weight: 800;
-  background: linear-gradient(to right, #ff004c, #ff9900); /* Neon red to orange gradient */
+  padding: 20px 40px;
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff6600, #ff9900); /* Fun orange gradient */
   color: #ffffff;
   border: none;
-  border-radius: 35px;
+  border-radius: 50px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 6px 15px rgba(255, 79, 43, 0.5);
@@ -62,8 +63,9 @@ button:hover {
 
 #result, #balance {
   margin-top: 20px;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: bold;
+  color: #ff6347; /* Warm tomato red for balance and result text */
 }
 
 #history {
@@ -71,13 +73,13 @@ button:hover {
   font-size: 20px;
   color: #ffffff;
   text-align: left;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 15px;
   max-height: 400px;
   overflow-y: auto;
   transition: max-height 0.3s ease;
-  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.6);
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.6);
 }
 
 /* Popup Styles */
@@ -100,7 +102,7 @@ button:hover {
 }
 
 .popup-content {
-  background: linear-gradient(to bottom right, #ff6600, #ff0000); /* Bold red and orange gradient */
+  background: linear-gradient(to bottom right, #ff66cc, #ffcc00); /* Bright pink to yellow gradient */
   padding: 40px;
   border-radius: 30px;
   text-align: center;
@@ -109,20 +111,20 @@ button:hover {
 }
 
 .popup-content h2 {
-  font-size: 32px;
+  font-size: 36px;
   color: #ffffff;
   margin-bottom: 15px;
   font-weight: bold;
 }
 
 .popup-content button {
-  padding: 15px 30px;
-  font-size: 22px;
+  padding: 18px 36px;
+  font-size: 24px;
   font-weight: bold;
-  background: linear-gradient(to right, #ff416c, #ff0000); /* Bold gradient from pink to red */
+  background: linear-gradient(to right, #ff416c, #ff0000); /* Bold pink-red gradient */
   color: #ffffff;
   border: none;
-  border-radius: 35px;
+  border-radius: 50px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -168,25 +170,25 @@ button:hover {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .wheel-container {
-    padding: 20px;
+    padding: 25px;
   }
 
   canvas {
-    width: 320px;
-    height: 320px;
+    width: 350px;
+    height: 350px;
   }
 
   button {
     font-size: 22px;
-    padding: 12px 25px;
+    padding: 15px 30px;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 36px;
   }
 
   #result {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .popup-content {
@@ -194,12 +196,12 @@ button:hover {
   }
 
   .popup-content h2 {
-    font-size: 26px;
+    font-size: 30px;
   }
 }
 
 #withdrawPopup .popup-content {
-  background: linear-gradient(to bottom right, #ff7043, #f44336);
+  background: linear-gradient(to bottom right, #ff7043, #ff5722); /* Orange to dark red gradient */
   padding: 40px;
   border-radius: 30px;
   text-align: center;
@@ -208,8 +210,8 @@ button:hover {
 }
 
 #withdrawPopup input {
-  padding: 12px;
-  font-size: 20px;
+  padding: 15px;
+  font-size: 22px;
   margin-top: 20px;
   width: 80%;
   border-radius: 15px;
@@ -218,13 +220,13 @@ button:hover {
 
 #withdrawPopup button {
   margin-top: 20px;
-  padding: 15px 30px;
-  font-size: 22px;
+  padding: 18px 36px;
+  font-size: 24px;
   font-weight: bold;
   background: linear-gradient(to right, #66bb6a, #388e3c);
   color: #ffffff;
   border: none;
-  border-radius: 35px;
+  border-radius: 50px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -256,12 +258,12 @@ button:hover {
 
 #withdrawPopup button {
   margin: 10px;
-  padding: 12px;
-  font-size: 20px;
+  padding: 15px 30px;
+  font-size: 22px;
   font-weight: bold;
   background: linear-gradient(to right, #ff6600, #ff0000);
   color: #ffffff;
   border: none;
-  border-radius: 35px;
+  border-radius: 50px;
   cursor: pointer;
 }
