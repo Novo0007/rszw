@@ -20,7 +20,7 @@ document.getElementById("closeWithdrawPopup").addEventListener("click", function
 
 
 const options = [
-  "₹500", "₹10", "₹200", "₹300", "₹40", "₹400 ", "₹200",
+  "₹50", "₹10", "₹200", "₹300", "₹40", "₹400 ", "₹200",
   "₹10", "₹300", "₹200", "₹500", "₹100", "₹-99", "50",
   "₹100", "₹1", "₹1000","₹10",
   "₹5", "₹69", "₹100"
@@ -95,12 +95,12 @@ function drawArrow() {
 
 function spinWheel() {
   if (isSpinning) return;
-  if (userBalance < 100) {
+  if (userBalance < 50) {
     alert("You don't have enough balance! Please add funds.");
     return;
   }
 
-  userBalance -= 100;
+  userBalance -= 50;
   updateBalance();
 
   isSpinning = true;
@@ -112,7 +112,7 @@ function spinWheel() {
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
   const rareAmounts = ["", "", "₹1000"];
-  if (spinCount % 30 === 0 || spinCount % 30 === 0) {
+  if (spinCount % 50 === 0 || spinCount % 50 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
     options[index] = rareAmount; // Replace one random option with a rare amount
@@ -211,13 +211,13 @@ function loadWithdrawalHistory() {
 function initiatePayment() {
   const options = {
     key: "rzp_live_X4DZnSdUxCtfV8",
-    amount: 10000,
+    amount: 5000,
     currency: "INR",
     name: "Money Wheel ",
     description: "Add funds to your account",
     handler: function (response) {
       alert("Payment successful!");
-      userBalance += 100;
+      userBalance += 50;
       updateBalance();
       window.location.href = "https://novo0007.github.io/rszw/$Code/RS.html";
     },
