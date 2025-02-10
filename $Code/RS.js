@@ -1,4 +1,4 @@
- const canvas = document.getElementById("wheel"); 
+  const canvas = document.getElementById("wheel"); 
 const ctx = canvas.getContext("2d");
 
 const spinButton = document.getElementById("spinButton");
@@ -61,17 +61,17 @@ function drawWheel() {
     ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, startAngle, endAngle, false);
     ctx.closePath();
 
-    ctx.fillStyle = i % 2 === 0 ? "#ff5e57" : "#ffd700";
+    ctx.fillStyle = i % 2 === 0 ? "#ffffff" : "#fffb00";
     ctx.fill();
-    ctx.strokeStyle = "#ffffff";
+    ctx.strokeStyle = "#ff0000";
     ctx.stroke();
 
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate(startAngle + arcSize / 2);
     ctx.textAlign = "right";
-    ctx.fillStyle = "#000";
-    ctx.font = "16px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.font = "20px Arial";
     ctx.fillText(options[i], canvas.width / 2 - 20, 10);
     ctx.restore();
   }
