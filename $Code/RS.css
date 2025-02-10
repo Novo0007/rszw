@@ -1,11 +1,11 @@
-/* General Styling */
+/* General Styling - Hacker Theme */
 body {
-  font-family: 'Comic Sans MS', sans-serif; /* Fun, cartoonish font */
+  font-family: 'Courier New', monospace; /* Monospace font for a techy feel */
   text-align: center;
-  background: linear-gradient(to bottom right, #ff99cc, #ffcc00); /* Soft pink to bright yellow gradient */
+  background: linear-gradient(to bottom right, #000000, #001f3f); /* Dark gradient */
   margin: 0;
   padding: 0;
-  color: #333333; /* Darker text for better readability */
+  color: #00ff00; /* Neon green text */
   background-size: 200% 200%;
   animation: boldBackground 4s ease infinite;
 }
@@ -13,76 +13,81 @@ body {
 h1 {
   font-size: 48px;
   margin: 30px 0;
-  color: #ff3385; /* Fun bright pink */
+  color: #00ff00; /* Neon green */
   text-transform: uppercase;
   font-weight: 800;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Slight shadow for a 3D effect */
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Neon glow effect */
+  animation: glitch 1s infinite;
 }
 
 .wheel-container {
-  max-width: 600px;
+  max-width: 90%; /* Adjusted for smaller screens */
   margin: 0 auto;
-  padding: 40px;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.6); /* Lighter background for a more playful feel */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
+  padding: 20px; /* Reduced padding for smaller screens */
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); /* Neon green shadow */
+  backdrop-filter: blur(10px);
 }
 
 canvas {
   border-radius: 50%;
-  background: #fff;
-  border: 8px solid #ff66cc; /* Playful pink border */
-  box-shadow: 0 0 30px rgba(255, 105, 180, 0.8); /* Light pink shadow */
+  background: #000;
+  border: 8px solid #00ff00; /* Neon green border */
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Neon green glow */
   margin: 20px auto;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 90%; /* Responsive width */
+  max-width: 400px; /* Maximum size for larger screens */
+  height: auto; /* Maintain aspect ratio */
 }
 
 canvas:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255, 105, 180, 1);
+  box-shadow: 0 0 40px rgba(0, 255, 0, 1);
 }
 
 button {
-  padding: 20px 40px;
-  font-size: 26px;
+  padding: 15px 30px; /* Adjusted padding for smaller screens */
+  font-size: 22px; /* Smaller font size for smaller screens */
   font-weight: bold;
-  background: linear-gradient(to right, #ff6600, #ff9900); /* Fun orange gradient */
-  color: #ffffff;
+  background: linear-gradient(to right, #00ff00, #00cc00); /* Neon green gradient */
+  color: #000;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px; /* Sharp edges for a techy look */
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 6px 15px rgba(255, 79, 43, 0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
 }
 
 button:hover {
   transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(255, 79, 43, 0.7);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
 }
 
 #result, #balance {
   margin-top: 20px;
-  font-size: 28px;
+  font-size: 24px; /* Adjusted font size for smaller screens */
   font-weight: bold;
-  color: #ff6347; /* Warm tomato red for balance and result text */
+  color: #00ff00; /* Neon green */
+  text-shadow: 0 0 10px #00ff00;
 }
 
 #history {
   margin-top: 30px;
-  font-size: 20px;
-  color: #ffffff;
+  font-size: 18px; /* Adjusted font size for smaller screens */
+  color: #00ff00;
   text-align: left;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px; /* Reduced padding for smaller screens */
   border-radius: 15px;
-  max-height: 400px;
+  max-height: 300px; /* Reduced height for smaller screens */
   overflow-y: auto;
   transition: max-height 0.3s ease;
-  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.6);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
 }
 
-/* Popup Styles */
+/* Popup Styles - Hacker Theme */
 .popup {
   position: fixed;
   top: 0;
@@ -102,36 +107,39 @@ button:hover {
 }
 
 .popup-content {
-  background: linear-gradient(to bottom right, #ff66cc, #ffcc00); /* Bright pink to yellow gradient */
-  padding: 40px;
-  border-radius: 30px;
+  background: linear-gradient(to bottom right, #000, #001f3f); /* Dark gradient */
+  padding: 30px; /* Reduced padding for smaller screens */
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
   animation: popUp 0.5s ease;
+  width: 90%; /* Adjusted width for smaller screens */
+  max-width: 500px; /* Maximum width for larger screens */
 }
 
 .popup-content h2 {
-  font-size: 36px;
-  color: #ffffff;
+  font-size: 30px; /* Adjusted font size for smaller screens */
+  color: #00ff00;
   margin-bottom: 15px;
   font-weight: bold;
+  text-shadow: 0 0 10px #00ff00;
 }
 
 .popup-content button {
-  padding: 18px 36px;
-  font-size: 24px;
+  padding: 15px 30px; /* Adjusted padding for smaller screens */
+  font-size: 20px; /* Smaller font size for smaller screens */
   font-weight: bold;
-  background: linear-gradient(to right, #ff416c, #ff0000); /* Bold pink-red gradient */
-  color: #ffffff;
+  background: linear-gradient(to right, #00ff00, #00cc00); /* Neon green gradient */
+  color: #000;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .popup-content button:hover {
   transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(255, 0, 0, 0.7);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
 }
 
 /* Keyframe Animations */
@@ -167,66 +175,130 @@ button:hover {
   }
 }
 
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 36px; /* Smaller font size for smaller screens */
+  }
+
   .wheel-container {
-    padding: 25px;
+    padding: 15px; /* Reduced padding for smaller screens */
   }
 
   canvas {
-    width: 350px;
-    height: 350px;
+    width: 90%; /* Adjusted width for smaller screens */
+    max-width: 300px; /* Maximum size for smaller screens */
   }
 
   button {
-    font-size: 22px;
-    padding: 15px 30px;
+    font-size: 18px; /* Smaller font size for smaller screens */
+    padding: 12px 24px; /* Adjusted padding for smaller screens */
   }
 
-  h1 {
-    font-size: 36px;
+  #result, #balance {
+    font-size: 20px; /* Smaller font size for smaller screens */
   }
 
-  #result {
-    font-size: 24px;
+  #history {
+    font-size: 16px; /* Smaller font size for smaller screens */
+    max-height: 200px; /* Reduced height for smaller screens */
   }
 
   .popup-content {
-    padding: 30px;
+    padding: 20px; /* Reduced padding for smaller screens */
   }
 
   .popup-content h2 {
-    font-size: 30px;
+    font-size: 24px; /* Smaller font size for smaller screens */
+  }
+
+  .popup-content button {
+    font-size: 18px; /* Smaller font size for smaller screens */
+    padding: 12px 24px; /* Adjusted padding for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 28px; /* Even smaller font size for mobile devices */
+  }
+
+  button {
+    font-size: 16px; /* Smaller font size for mobile devices */
+    padding: 10px 20px; /* Adjusted padding for mobile devices */
+  }
+
+  #result, #balance {
+    font-size: 18px; /* Smaller font size for mobile devices */
+  }
+
+  #history {
+    font-size: 14px; /* Smaller font size for mobile devices */
+    max-height: 150px; /* Reduced height for mobile devices */
+  }
+
+  .popup-content h2 {
+    font-size: 20px; /* Smaller font size for mobile devices */
+  }
+
+  .popup-content button {
+    font-size: 16px; /* Smaller font size for mobile devices */
+    padding: 10px 20px; /* Adjusted padding for mobile devices */
   }
 }
 
 #withdrawPopup .popup-content {
-  background: linear-gradient(to bottom right, #ff7043, #ff5722); /* Orange to dark red gradient */
-  padding: 40px;
-  border-radius: 30px;
+  background: linear-gradient(to bottom right, #000, #001f3f); /* Dark gradient */
+  padding: 30px; /* Reduced padding for smaller screens */
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
   animation: popUp 0.5s ease;
+  width: 90%; /* Adjusted width for smaller screens */
+  max-width: 400px; /* Maximum width for larger screens */
 }
 
 #withdrawPopup input {
-  padding: 15px;
-  font-size: 22px;
+  padding: 12px; /* Adjusted padding for smaller screens */
+  font-size: 18px; /* Smaller font size for smaller screens */
   margin-top: 20px;
-  width: 80%;
-  border-radius: 15px;
-  border: 2px solid #ff0000;
+  width: 90%;
+  border-radius: 5px;
+  border: 2px solid #00ff00;
+  background: #000;
+  color: #00ff00;
 }
 
 #withdrawPopup button {
   margin-top: 20px;
-  padding: 18px 36px;
-  font-size: 24px;
+  padding: 12px 24px; /* Adjusted padding for smaller screens */
+  font-size: 18px; /* Smaller font size for smaller screens */
   font-weight: bold;
-  background: linear-gradient(to right, #66bb6a, #388e3c);
-  color: #ffffff;
+  background: linear-gradient(to right, #00ff00, #00cc00); /* Neon green gradient */
+  color: #000;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -240,10 +312,12 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 30px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background: #000;
+  padding: 20px; /* Reduced padding for smaller screens */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
   z-index: 1000;
+  width: 90%; /* Adjusted width for smaller screens */
+  max-width: 400px; /* Maximum width for larger screens */
 }
 
 .popup-content {
@@ -252,18 +326,18 @@ button:hover {
 
 #withdrawPopup input {
   margin: 10px 0;
-  padding: 12px;
+  padding: 10px; /* Adjusted padding for smaller screens */
   width: 90%;
 }
 
 #withdrawPopup button {
   margin: 10px;
-  padding: 15px 30px;
-  font-size: 22px;
+  padding: 10px 20px; /* Adjusted padding for smaller screens */
+  font-size: 16px; /* Smaller font size for smaller screens */
   font-weight: bold;
-  background: linear-gradient(to right, #ff6600, #ff0000);
-  color: #ffffff;
+  background: linear-gradient(to right, #00ff00, #00cc00); /* Neon green gradient */
+  color: #000;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
 }
