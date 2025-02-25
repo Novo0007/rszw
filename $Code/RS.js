@@ -13,7 +13,7 @@ const spinSound = document.getElementById("spinSound");
 const congratsSound = document.getElementById("congratsSound");
 const historyDiv = document.getElementById("history");
 
-let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 100;
+let userBalance = JSON.parse(localStorage.getItem("userBalance")) || 0;
 document.getElementById("closeWithdrawPopup").addEventListener("click", function () {
   document.getElementById("withdrawPopup").classList.add("hidden");
 });
@@ -111,7 +111,7 @@ function spinWheel() {
   spinCount++; // Increment the spin count
 
   // Modify the options array to ensure ₹19, ₹29, ₹100 appear only after 15 or 17 spins
-  const rareAmounts = ["100", "1000", "₹1000"];
+  const rareAmounts = ["100", "", "₹1000"];
   if (spinCount % 50 === 0 || spinCount % 50 === 0) {
     const rareAmount = rareAmounts[Math.floor(Math.random() * rareAmounts.length)];
     const index = Math.floor(Math.random() * numOptions);
