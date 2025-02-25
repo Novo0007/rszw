@@ -5,7 +5,7 @@ body {
   background-color: white; /* Dark gradient */
   margin: 0;
   padding: 0;
-  color: #00ff00; /* Neon green text */
+  color: black; /* Neon green text */
   background-size: 200% 200%;
   animation: boldBackground 4s ease infinite;
 }
@@ -13,7 +13,7 @@ body {
 h1 {
   font-size: 48px;
   margin: 30px 0;
-  color: #00ff00; /* Neon green */
+  color: black; /* Neon green */
   text-transform: uppercase;
   font-weight: 800;
   text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Neon glow effect */
