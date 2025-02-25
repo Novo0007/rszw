@@ -2,7 +2,7 @@
 body {
   font-family: 'Courier New', monospace; /* Monospace font for a techy feel */
   text-align: center;
-  background: white; /* Dark gradient */
+  background-color: white; /* Dark gradient */
   margin: 0;
   padding: 0;
   color: #00ff00; /* Neon green text */
@@ -25,7 +25,7 @@ h1 {
   margin: 0 auto;
   padding: 20px; /* Reduced padding for smaller screens */
   border-radius: 15px;
-  background: white; /* Semi-transparent black */
+  background-color: white; /* Semi-transparent black */
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); /* Neon green shadow */
   backdrop-filter: blur(10px);
 }
